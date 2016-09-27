@@ -1,7 +1,10 @@
-require 'dotenv'
+unless ENV['RACK_ENV'] == 'production'
+  require 'dotenv'
+  Dotenv.load
+end
+
 require 'aws-sdk'
 
-Dotenv.load
 
 s3  = Aws::S3::Client.new
 
